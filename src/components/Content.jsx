@@ -2,14 +2,20 @@ import { Meaning } from './Meaning';
 import { AudioBtn } from './AudioBtn';
 
 export function Content({ data }) {
+  const src = data
+    .map((obj) => obj.phonetics)
+    .flat()
+    .map((phonetic) => phonetic.audio)
+    .find((audio) => audio !== '');
+
   if (data.length === 0) return;
   return (
     <>
       <div>
         <h1>{data[0].word}</h1>
-        <h2>{data[0].phonetic}</h2>
+        {data[0].phonetic && <h2>{data[0].phonetic}</h2>}
       </div>
-      <AudioBtn data={data} />
+      {src && <AudioBtn src={src} />}
       {data.map((obj, index) => (
         <>
           {obj.meanings.map((meaning, idx) => (

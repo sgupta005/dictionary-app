@@ -1,13 +1,19 @@
-export function Search({ word, onSetWord, onSearchButtonClick }) {
+export function Search({
+  onSearchButtonClick,
+  inputRef,
+  searchInputValue,
+  onSetSearchInputValue,
+}) {
   return (
     <div>
       <input
+        ref={inputRef}
         type="text"
-        value={word}
-        onChange={(e) => onSetWord(e.target.value)}
+        value={searchInputValue}
+        onChange={(e) => onSetSearchInputValue(e.target.value)}
         placeholder="Search for any word..."
       />
-      <button onClick={onSearchButtonClick}>Search</button>
+      <button onClick={() => onSearchButtonClick()}>Search</button>
     </div>
   );
 }

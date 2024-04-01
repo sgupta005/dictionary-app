@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
-export function AudioBtn({ data }) {
+export function AudioBtn({ src }) {
   const audioRef = useRef(null);
-  const src = data[0].phonetics[data[0].phonetics.length - 1].audio;
+
   function handlePlayAudio() {
     audioRef.current.play();
   }
